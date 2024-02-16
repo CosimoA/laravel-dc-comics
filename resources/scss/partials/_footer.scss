@@ -1,0 +1,124 @@
+.footer-top {
+    background-image: url('../imgs/footer-bg.jpg');
+    background-size: cover;
+
+    .footer-top-inner {
+        padding: 3em 0;
+        background-image: url('../imgs/dc-logo-bg.png');
+        background-repeat: no-repeat;
+        background-position: right;
+
+        .footer-top-upper {
+            display: flex;
+
+            .footer-top-menu {
+                padding-right: 2.5em;
+
+                .footer-top-menu-title {
+                    color: $footer_title_color;
+                    font-size: 21px;
+                    margin-bottom: 1em;
+                }
+
+                ul {
+                    list-style-type: none;
+                    margin-bottom: 1.2em;
+                    padding: 0;
+
+                    li {
+                        margin: 5px 0;
+
+                        a {
+                            color: $footer_text_color;
+                            font-size: 12px;
+
+                            &:hover {
+                                color: $colorPrimary;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .footer-copyright {
+
+        p {
+            color: $footer_text_color;
+            font-size: 12px;
+            margin: 0;
+
+            a {
+                color: $colorPrimary;
+            }
+        }
+    }
+}
+
+.footer-bottom {
+    background: $footer_bg_color;
+    padding: 1em 0;
+
+    .container{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .cta {
+        background: transparent;
+        border: 2px solid $colorPrimary;
+        padding: 0.8em 1.2em;
+        transition: 0.5s;
+        display: inline-block;
+        color: white;
+
+        &:hover {
+            background: $colorPrimary;
+        }
+    }
+
+    .social {
+        display: flex;
+        align-items: center;
+
+        .social-title {
+            color: $colorPrimary;
+            font-size: 21px;
+            line-height: 50px;
+            margin-right: 1em;
+        }
+
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+
+            li{
+                display: inline-block;
+                margin-left: 1em;
+
+                &:hover {
+                    opacity: 0.5;
+                }
+            }
+
+            // ciclo for per scorrere le icone dei social e concatenare URL col nome di ogni singola icona
+            @each $icon in $footer_socials {
+                li.#{$icon} {
+                    background-image: url('../imgs/footer-#{$icon}.png');
+                    background-repeat: no-repeat;
+                    background-size: contain;
+                }
+            }
+
+            a {
+                display: inline-block;
+                width: 35px;
+                height: 35px;
+
+            }
+        }
+    }
+}

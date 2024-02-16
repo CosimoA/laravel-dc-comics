@@ -1,0 +1,23 @@
+.shop-link {
+    background-color: $colorPrimary;
+    padding: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .card-shop {
+        display: flex;
+        align-items: center;
+        margin: 1rem;
+
+        img{
+            width: 60px;
+            height: 60px;
+            object-fit: contain;
+        }
+
+        a{
+            color: #fff;
+        }
+    }
+}
