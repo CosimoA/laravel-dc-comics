@@ -1,0 +1,39 @@
+.comics-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.comics-title {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.comics-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.comic-item {
+    margin-bottom: 10px;
+}
+
+.comic-link {
+    text-decoration: none;
+    color: #007bff;
+    font-weight: bold;
+}
+
+.comic-link:hover {
+    text-decoration: underline;
+}
+
+.comic-details {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.comic-description {
+    font-size: 16px;
+    color: #555;
+}

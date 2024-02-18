@@ -1,7 +1,12 @@
-@import "partials/variables";
-@import "partials/common";
-@import "partials/header";
+// @import "partials/variables";
+// @import "partials/common";
+// @import "partials/header";
 @import "partials/home";
-@import "partials/footer";
-// @import "partials/info-comics";
+// @import "partials/footer";
+@import "partials/show";
 // @import "partials/main-nav";
+
+*{
+    text-align: center;
+    list-style: none;
+}
