@@ -14,6 +14,9 @@
                     <a href="{{ route('comic.show', $comic->id) }}" class="comic-link">
                         {{ $comic->title }}
                     </a>
+                    <a href="{{ route('comic.edit', $comic->id) }}" class="btn btn-secondary">
+                        Edit
+                    </a>
                 </li>
             @endforeach
         </ul>
