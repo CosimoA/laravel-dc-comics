@@ -88,18 +88,14 @@ class ComicController extends Controller
     public function update(Request $request, $id)
     {
         $data = $request -> all();
-        // Recupera il fumetto dal database
         $comic = Comic::find($id);
 
-        // Aggiorna i dati del fumetto con i valori inviati dal form
         $comic->title = $data['title'];
         $comic->price = $data['price'];
         $comic->description = $data['description'];
 
-        // Salva il fumetto aggiornato nel database
-        $comic->update();
+        $comic->save();
 
-        // Reindirizza alla pagina di dettaglio del fumetto aggiornato
         return redirect()->route('comic.show', $comic->id);
     }
 
@@ -111,6 +107,10 @@ class ComicController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $comic = Comic::find($id);
+
+        $comic->delete();
+
+        return redirect()->route('comic.index')->with('success', 'Fumetto eliminato con successo.');
     }
 }
