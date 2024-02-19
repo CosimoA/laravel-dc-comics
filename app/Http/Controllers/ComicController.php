@@ -87,15 +87,23 @@ class ComicController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $data = $request -> all();
-        $comic = Comic::find($id);
+        // Validazione dei dati
+        $validatedData = $request->validate([
+            'title' => 'required|string|max:255',
+            'price' => 'required|numeric',
+            'description' => 'required|string',
+        ]);
 
-        $comic->title = $data['title'];
-        $comic->price = $data['price'];
-        $comic->description = $data['description'];
+        // Recupera il fumetto dal database
+        $comic = Comic::findOrFail($id);
 
+        // Aggiornamento dei dati del fumetto
+        $comic->title = $validatedData['title'];
+        $comic->price = $validatedData['price'];
+        $comic->description = $validatedData['description'];
         $comic->save();
 
+        // Redirect alla pagina di visualizzazione del fumetto aggiornato
         return redirect()->route('comic.show', $comic->id);
     }
 
