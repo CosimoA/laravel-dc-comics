@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Comic;
+use App\Http\Requests\CreateComicRequest;
+
 
 class ComicController extends Controller
 {
@@ -34,20 +36,13 @@ class ComicController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreateComicRequest $request)
     {
-        // Validazione dei dati
-        $validatedData = $request->validate([
-            'title' => 'required|string|max:255',
-            'price' => 'required|numeric',
-            'description' => 'required|string',
-        ]);
 
-        // Creazione del nuovo fumetto
         $comic = new Comic();
-        $comic->title = $validatedData['title'];
-        $comic->price = $validatedData['price'];
-        $comic->description = $validatedData['description'];
+        $comic->title = $request->title;
+        $comic->price = $request->price;
+        $comic->description = $request->description;
         $comic->save();
 
         // Redirect alla pagina di visualizzazione del nuovo fumetto
