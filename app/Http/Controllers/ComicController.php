@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Comic;
-use App\Http\Requests\CreateComicRequest;
+use App\Http\Requests\ComicRequest;
 
 
 class ComicController extends Controller
@@ -36,7 +36,7 @@ class ComicController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(CreateComicRequest $request)
+    public function store(ComicRequest $request)
     {
 
         $comic = new Comic();
@@ -80,24 +80,17 @@ class ComicController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ComicRequest $request, $id)
     {
-        // Validazione dei dati
-        $validatedData = $request->validate([
-            'title' => 'required|string|max:255',
-            'price' => 'required|numeric',
-            'description' => 'required|string',
-        ]);
-
         // Recupera il fumetto dal database
-        $comic = Comic::findOrFail($id);
-
+        $comic = Comic::find($id);
+    
         // Aggiornamento dei dati del fumetto
-        $comic->title = $validatedData['title'];
-        $comic->price = $validatedData['price'];
-        $comic->description = $validatedData['description'];
+        $comic->title = $request->title;
+        $comic->price = $request->price;
+        $comic->description = $request->description;
         $comic->save();
-
+    
         // Redirect alla pagina di visualizzazione del fumetto aggiornato
         return redirect()->route('comic.show', $comic->id);
     }
